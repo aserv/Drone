@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: bfc6fb378f10fa543a83bd0ced5de4e3
+timeCreated: 1517086353
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: GEIST RND
+  fontNames:
+  - GEIST RND
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
