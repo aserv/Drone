@@ -4,12 +4,12 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerDroneControl : MonoBehaviour {
     public float m_MoveSpeed;
-    public Transform m_Destination;
 
     private Vector2 m_MoveVector;
     private bool m_CanCommand = true;
     private Rigidbody m_RigidBody;
     private NavMeshAgent m_Agent;
+    private bool m_CommandDown;
 
     void Awake() {
         //GetComponent<NavMeshAgent>().destination = m_Destination.position;
@@ -19,7 +19,19 @@ public class PlayerDroneControl : MonoBehaviour {
 
     void Update() {
         if (!m_CanCommand) return;
-        m_MoveVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (m_CommandDown) {
+            Debug.Log("Up");
+            m_CommandDown = Input.GetAxisRaw("Command") > 0;
+        } else if (Input.GetAxisRaw("Command") > 0) {
+            Debug.Log("Command");
+            m_CommandDown = true;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position + Vector3.up * 2, Vector3.down, out hit, 4, 1 << LayerMask.NameToLayer("Terminal"), QueryTriggerInteraction.Collide)) {
+                Debug.Log("Hit");
+                hit.collider.gameObject.GetComponent<CommandInZone>().ToggleActive();
+            }
+        }
+        m_MoveVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); 
     }
 
     void FixedUpdate() {
