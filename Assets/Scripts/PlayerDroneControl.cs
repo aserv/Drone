@@ -25,9 +25,9 @@ public class PlayerDroneControl : MonoBehaviour {
     void FixedUpdate() {
         Vector2 vel = m_RigidBody.velocity;
         //Make this smoother
-        vel = m_MoveSpeed * m_MoveVector;
-        //m_Agent.Move(new Vector3(m_MoveVector.x, 0, m_MoveVector.y));
-        m_RigidBody.velocity = new Vector3(vel.x, 0, vel.y);
+        vel = m_MoveSpeed * m_MoveVector * Time.deltaTime;
+        m_Agent.Move(new Vector3(vel.x, 0, vel.y));
+        //m_RigidBody.velocity = new Vector3(vel.x, 0, vel.y);
     }
 
     static int IntSign(float f) {
