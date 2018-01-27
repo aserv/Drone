@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: ff298c89a48d1e24f9a422cb9ff5dd97
+timeCreated: 1517086399
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: okolaks
+  fontNames:
+  - okolaks
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 195ad21124b989b41bd87f6b9f8dad99, type: 3}
+  - {fileID: 12800000, guid: 0eb1e3f60e80e064093991f00acb286b, type: 3}
+  - {fileID: 12800000, guid: ab73f6cbfe97c0049890ab80ffedc162, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
