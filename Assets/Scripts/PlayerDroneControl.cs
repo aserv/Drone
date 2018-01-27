@@ -19,7 +19,7 @@ public class PlayerDroneControl : MonoBehaviour {
 
     void Update() {
         if (!m_CanCommand) return;
-        m_MoveVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); 
+        m_MoveVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
     void FixedUpdate() {
