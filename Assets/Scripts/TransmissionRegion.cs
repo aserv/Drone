@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider))]
 public class TransmissionRegion : MonoBehaviour {
-    void OnTriggerEnter2D(Collider2D col) {
+    void OnTriggerEnter(Collider col) {
+        Debug.Log("Enter");
+        Debug.Log(col);
         if (col.CompareTag("Player")) {
             col.GetComponent<PlayerDroneControl>().SetCommandState(true);
         }
     }
 
-    void OnTriggerExit2D(Collider2D col) {
+    void OnTriggerExit(Collider col) {
+        Debug.Log("Exit");
+        Debug.Log(col);
         if (col.CompareTag("Player")) {
             col.GetComponent<PlayerDroneControl>().SetCommandState(false);
         }
