@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212574056866979320}
   - component: {fileID: 65808527075146448}
   - component: {fileID: 114054684312174950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terminal
   m_TagString: Terminal
   m_Icon: {fileID: 0}

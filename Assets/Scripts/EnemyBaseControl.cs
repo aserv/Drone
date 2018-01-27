@@ -29,7 +29,7 @@ public class EnemyBaseControl : MonoBehaviour {
     void Start() {
         m_Agent = GetComponent<NavMeshAgent>();
         m_Agent.Warp(m_PatrolPath[0].m_Position.position);
-        m_Agent.destination = transform.position;
+        m_Agent.destination = CleanDestination(transform.position);
         if (m_PatrolPath != null || m_PatrolPath.Length != 0) m_AlertState = AlertState.Patroling;
     }
 
@@ -69,14 +69,14 @@ public class EnemyBaseControl : MonoBehaviour {
             if (m_WaitTime <= 0) {
                 m_PathIndex = (m_PathIndex + 1) % m_PatrolPath.Length;
                 m_WaitTime = m_PatrolPath[m_PathIndex].m_WaitTime;
-                m_Agent.destination = m_PatrolPath[m_PathIndex].m_Position.position;
+                m_Agent.destination = CleanDestination(m_PatrolPath[m_PathIndex].m_Position.position);
             }
         }
     }
 
     void ChaseAction() {
         if (m_TargetPlayer) {
-            m_Agent.destination = m_TargetPlayer.transform.position;
+            m_Agent.destination = CleanDestination(m_TargetPlayer.transform.position);
         } else if (m_Agent.remainingDistance < 0.1) {
             m_AlertState = AlertState.Searching;
             m_WaitTime = m_SearchTime;
@@ -100,6 +100,10 @@ public class EnemyBaseControl : MonoBehaviour {
             }
             m_PathIndex = minIndex;
         }
+    }
+
+    Vector3 CleanDestination(Vector3 v) {
+        return new Vector3(v.x, transform.position.y, v.z);
     }
 }
 
