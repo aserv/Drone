@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MoveSpeed: 2
+  m_SignalDelay: 0.5
 --- !u!135 &135794294716797398
 SphereCollider:
   m_ObjectHideFlags: 1
