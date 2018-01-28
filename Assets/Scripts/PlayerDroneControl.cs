@@ -7,25 +7,26 @@ public class PlayerDroneControl : MonoBehaviour {
     public Transform m_StartPos;
     public float m_SignalDelay;
 
+    private Rigidbody m_RigidBody;
     private Vector2 m_MoveVector;
     private bool m_CanCommand = true;
     private NavMeshAgent m_Agent;
     private bool m_CommandDown;
-    private float m_CommandDelay = 0f;
+    //private float m_CommandDelay = 0f;
+    private Vector3 continuationVector;
 
-    void Awake() {
-        //GetComponent<NavMeshAgent>().destination = m_Destination.position;
-        m_Agent = GetComponent<NavMeshAgent>();
-        m_Agent.Warp(m_StartPos.position);
+    void Start() {
+        transform.position = m_StartPos.position;
+        m_RigidBody = GetComponent<Rigidbody>();
     }
 
     void Update() {
-        if (m_CommandDelay > 0) {
-            m_CommandDelay -= Time.deltaTime;
-            if (m_CommandDelay <= 0) {
-                m_CanCommand = !m_CanCommand;
-            }
-        }
+        //if (m_CommandDelay > 0) {
+        //    m_CommandDelay -= Time.deltaTime;
+        //    if (m_CommandDelay <= 0) {
+        //        m_CanCommand = !m_CanCommand;
+        //    }
+        //}
         if (!m_CanCommand) return;
         if (m_CommandDown) {
             m_CommandDown = Input.GetAxisRaw("Command") > 0;
@@ -36,14 +37,28 @@ public class PlayerDroneControl : MonoBehaviour {
                 hit.collider.gameObject.GetComponent<CommandInZone>().ToggleActive();
             }
         }
-        m_MoveVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); 
+        //m_MoveVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); 
     }
 
     void FixedUpdate() {
-        //Make this smoother
-        Vector2 vel = m_MoveSpeed * m_MoveVector * Time.deltaTime;
-        m_Agent.Move(new Vector3(vel.x, 0, vel.y));
-        //m_RigidBody.velocity = new Vector3(vel.x, 0, vel.y);
+        if (m_CanCommand) {
+            float hmove = m_MoveSpeed * Input.GetAxis("Horizontal");
+            float vmove = m_MoveSpeed * Input.GetAxis("Vertical");
+            float ahmove = Mathf.Abs(hmove);
+            float avmove = Mathf.Abs(vmove);
+            if (ahmove > avmove && ahmove >= 0.1) {
+                continuationVector = new Vector3(hmove, 0, 0) * Time.deltaTime;
+                transform.Translate(continuationVector);
+                return;
+            } else if (avmove >= 0.1) {
+                continuationVector = new Vector3(0, 0, vmove) * Time.deltaTime;
+                transform.Translate(continuationVector);
+                return;
+            }
+
+        } else {
+            transform.Translate(continuationVector);
+        }
     }
 
     static int IntSign(float f) {
@@ -57,12 +72,13 @@ public class PlayerDroneControl : MonoBehaviour {
     }
 
     public void SetCommandState(bool state) {
-        if (state != m_CanCommand) {
-            if (m_CommandDelay <= 0) {
-                m_CommandDelay = m_SignalDelay;
-            }
-        } else {
-            m_CommandDelay = 0f;
-        }
+        //if (state != m_CanCommand) {
+        //    if (m_CommandDelay <= 0) {
+        //        m_CommandDelay = m_SignalDelay;
+        //    }
+        //} else {
+        //    m_CommandDelay = 0f;
+        //}
+        m_CanCommand = state;
     }
 }
