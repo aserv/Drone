@@ -22,7 +22,7 @@ public class TransmissionRegion : MonoBehaviour {
 
     public void Activate(bool val) {
         m_Active = val;
-        GetComponent<SpriteRenderer>().color = m_Active ? Color.white : Color.green;
+        GetComponent<SpriteRenderer>().color = m_Active ? Color.white : Color.blue;
         GetComponent<Collider>().enabled = m_Active;
         if (m_TransmissionSource != null) m_TransmissionSource.Activate(val); 
     }

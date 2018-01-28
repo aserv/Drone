@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -66,3 +68,5 @@ public class EditorMapBaker : Editor {
         }
     }
 }
+
+#endif
