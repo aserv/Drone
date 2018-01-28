@@ -7,14 +7,12 @@ public class TransmissionRegion : MonoBehaviour {
     private bool m_Active;
 
     void OnTriggerEnter(Collider col) {
-        Debug.Log("Enter");
         if (col.CompareTag("Player")) {
             col.GetComponent<PlayerDroneControl>().SetCommandState(true);
         }
     }
 
     void OnTriggerExit(Collider col) {
-        Debug.Log("Exit");
         if (col.CompareTag("Player")) {
             col.GetComponent<PlayerDroneControl>().SetCommandState(false);
         }
