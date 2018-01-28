@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerDroneControl : MonoBehaviour {
     public float m_MoveSpeed;
     public Transform m_StartPos;
