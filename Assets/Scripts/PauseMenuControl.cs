@@ -35,6 +35,7 @@ public class PauseMenuControl : MonoBehaviour {
     }
 
     public void ClickRestart() {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
