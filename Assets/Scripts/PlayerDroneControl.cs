@@ -36,6 +36,10 @@ public class PlayerDroneControl : MonoBehaviour {
             if (Physics.Raycast(transform.position + Vector3.up * 2, Vector3.down, out hit, 4, 1 << LayerMask.NameToLayer("Terminal"), QueryTriggerInteraction.Collide)) {
                 hit.collider.gameObject.GetComponent<CommandInZone>().ToggleActive();
             }
+            if (Physics.Raycast(transform.position + Vector3.up * 2, Vector3.down, out hit, 4, 1 << LayerMask.NameToLayer("File"), QueryTriggerInteraction.Collide))
+            {
+
+            }
         }
         //m_MoveVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); 
     }
