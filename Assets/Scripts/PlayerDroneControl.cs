@@ -4,11 +4,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerDroneControl : MonoBehaviour {
     public float m_MoveSpeed;
+    public float m_SignalDelay;
 
     private Vector2 m_MoveVector;
     private bool m_CanCommand = true;
     private NavMeshAgent m_Agent;
     private bool m_CommandDown;
+    private float m_CommandDelay = 0f;
 
     void Awake() {
         //GetComponent<NavMeshAgent>().destination = m_Destination.position;
@@ -16,6 +18,12 @@ public class PlayerDroneControl : MonoBehaviour {
     }
 
     void Update() {
+        if (m_CommandDelay > 0) {
+            m_CommandDelay -= Time.deltaTime;
+            if (m_CommandDelay <= 0) {
+                m_CanCommand = !m_CanCommand;
+            }
+        }
         if (!m_CanCommand) return;
         if (m_CommandDown) {
             m_CommandDown = Input.GetAxisRaw("Command") > 0;
@@ -47,6 +55,12 @@ public class PlayerDroneControl : MonoBehaviour {
     }
 
     public void SetCommandState(bool state) {
-        m_CanCommand = state;
+        if (state != m_CanCommand) {
+            if (m_CommandDelay <= 0) {
+                m_CommandDelay = m_SignalDelay;
+            } else if (m_CommandDelay > 0) {
+                m_CommandDelay = 0;
+            }
+        }
     }
 }

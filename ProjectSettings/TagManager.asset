@@ -7,6 +7,9 @@ TagManager:
   - Terminal
   - Enemy
   - Zone
+  - Walkable
+  - Wall
+  - Temp
   layers:
   - Default
   - TransparentFX
