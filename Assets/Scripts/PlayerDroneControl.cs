@@ -9,7 +9,7 @@ public class PlayerDroneControl : MonoBehaviour {
 
     private Rigidbody m_RigidBody;
     private Vector2 m_MoveVector;
-    private bool m_CanCommand = true;
+    private int m_CanCommand = 0;
     private NavMeshAgent m_Agent;
     private bool m_CommandDown;
     //private float m_CommandDelay = 0f;
@@ -27,7 +27,7 @@ public class PlayerDroneControl : MonoBehaviour {
         //        m_CanCommand = !m_CanCommand;
         //    }
         //}
-        if (!m_CanCommand) return;
+        if (m_CanCommand == 0) return;
         if (m_CommandDown) {
             m_CommandDown = Input.GetAxisRaw("Command") > 0;
         } else if (Input.GetAxisRaw("Command") > 0) {
@@ -45,7 +45,7 @@ public class PlayerDroneControl : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (m_CanCommand) {
+        if (m_CanCommand > 0) {
             float hmove = m_MoveSpeed * Input.GetAxis("Horizontal");
             float vmove = m_MoveSpeed * Input.GetAxis("Vertical");
             float ahmove = Mathf.Abs(hmove);
@@ -83,6 +83,6 @@ public class PlayerDroneControl : MonoBehaviour {
         //} else {
         //    m_CommandDelay = 0f;
         //}
-        m_CanCommand = state;
+        m_CanCommand += state ? 1 : -1;
     }
 }
