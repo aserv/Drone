@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1137443871208314
 GameObject:
   m_ObjectHideFlags: 1
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 223863421855778540}
   - component: {fileID: 114687803836264256}
   - component: {fileID: 114890282474074474}
-  - component: {fileID: 114724317998582288}
+  - component: {fileID: 114669508326772928}
   m_Layer: 5
   m_Name: Death Panel
   m_TagString: Untagged
@@ -133,7 +133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1780296982038920
 GameObject:
   m_ObjectHideFlags: 1
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114724317998582288}
+      - m_Target: {fileID: 114669508326772928}
         m_MethodName: ClickRestart
         m_Mode: 1
         m_Arguments:
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114724317998582288}
+      - m_Target: {fileID: 114669508326772928}
         m_MethodName: ClickQuit
         m_Mode: 1
         m_Arguments:
@@ -336,6 +336,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114669508326772928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1365957862443096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef47e842247b094881f9e7d1668eeb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DeathPanel: {fileID: 1760370757768796}
+  m_Dead: 0
+  m_CurrentLevel: 0
 --- !u!114 &114687803836264256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,20 +404,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: FAILED
---- !u!114 &114724317998582288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1365957862443096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7facb42a6fc451b4fa335aa760de2ab5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 1760370757768796}
-  pauseButton: 0
-  currentLvl: 0
 --- !u!114 &114753821282069638
 MonoBehaviour:
   m_ObjectHideFlags: 1
