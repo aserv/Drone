@@ -4,6 +4,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerDroneControl : MonoBehaviour {
     public float m_MoveSpeed;
+    public Transform m_StartPos;
 
     private Vector2 m_MoveVector;
     private bool m_CanCommand = true;
@@ -13,6 +14,7 @@ public class PlayerDroneControl : MonoBehaviour {
     void Awake() {
         //GetComponent<NavMeshAgent>().destination = m_Destination.position;
         m_Agent = GetComponent<NavMeshAgent>();
+        m_Agent.Warp(m_StartPos.position);
     }
 
     void Update() {

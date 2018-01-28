@@ -9,15 +9,20 @@ public class PauseMenuControl : MonoBehaviour {
     public KeyCode pauseButton;
 
     private bool paused = false;
+    public int currentLvl;
+
+    void Awake() {
+        currentLvl = SceneManager.GetActiveScene().buildIndex;
+    }
 
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(pauseButton)) {
-            clickPause();
+            ClickPause();
         }
     }
 
-    public void clickPause() {
+    public void ClickPause() {
         if (paused) {
             paused = false;
             Time.timeScale = 1;
@@ -29,11 +34,11 @@ public class PauseMenuControl : MonoBehaviour {
         }
     }
 
-    public void clickStart(int level) {
-        SceneManager.LoadScene(level);
+    public void ClickRestart() {
+        SceneManager.LoadScene(currentLvl);
     }
 
-    public void clickQuit() {
+    public void ClickQuit() {
         SceneManager.LoadScene(0);
     }
 }
