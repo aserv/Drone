@@ -47,6 +47,12 @@ public class EnemyBaseControl : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter(Collision col) {
+        if (col.gameObject.CompareTag("Player")) {
+            GameObject.Find("Death Panel").GetComponent<DeathMenuControl>().m_Dead = true;
+        }
+    }
+
     void Update() {
         switch (m_AlertState) {
         case AlertState.Idle:
