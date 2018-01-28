@@ -60,9 +60,9 @@ public class PlayerDroneControl : MonoBehaviour {
         if (state != m_CanCommand) {
             if (m_CommandDelay <= 0) {
                 m_CommandDelay = m_SignalDelay;
-            } else if (m_CommandDelay > 0) {
-                m_CommandDelay = 0;
             }
+        } else {
+            m_CommandDelay = 0f;
         }
     }
 }
