@@ -2111,7 +2111,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cd56e0af55f52784db48046da5408690, type: 3}
+  m_audioClip: {fileID: 8300000, guid: faa5d2a51097b0848b0d678d7c695539, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2447,6 +2447,12 @@ Prefab:
       propertyPath: m_AlertState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 212541741041758282, guid: 6813f4e9c873bb84b96d0519d84c0dc3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c4d290b9d77b90046a597d344e22b510,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6813f4e9c873bb84b96d0519d84c0dc3, type: 2}
   m_IsPrefabParent: 0

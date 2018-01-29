@@ -469,12 +469,12 @@ Prefab:
     - target: {fileID: 65928897065443766, guid: 8d7e1882d925f1244b5eac1a0407ea91,
         type: 2}
       propertyPath: m_Center.y
-      value: -0.21341167
+      value: -0.17276059
       objectReference: {fileID: 0}
     - target: {fileID: 65928897065443766, guid: 8d7e1882d925f1244b5eac1a0407ea91,
         type: 2}
       propertyPath: m_Size.y
-      value: 1.2072208
+      value: 1.125919
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d7e1882d925f1244b5eac1a0407ea91, type: 2}
@@ -2600,7 +2600,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: f4cffb744f3de0e4fafe8612d2e29057, type: 3}
+      objectReference: {fileID: 8300000, guid: cd56e0af55f52784db48046da5408690, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b1f56216a9b4964593b4f561bf1a8bf, type: 2}
   m_IsPrefabParent: 0
